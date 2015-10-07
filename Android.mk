@@ -9,6 +9,11 @@ ifneq ($(filter guppy dory, $(TARGET_DEVICE)),)
 TARGET_INVENSENSE_SENSOR := 6515
 endif
 
-ifneq ($(filter 6515 65xx,$(TARGET_INVENSENSE_SENSOR)),)
+ifneq ($(filter manta grouper tuna mako, $(TARGET_DEVICE)),)
+# manta, grouper, tuna, and mako expect 60xx sensors.
+TARGET_INVENSENSE_SENSOR := 60xx
+endif
+
+ifneq ($(filter 60xx 6515 65xx,$(TARGET_INVENSENSE_SENSOR)),)
 include $(call all-named-subdir-makefiles,$(TARGET_INVENSENSE_SENSOR))
 endif
